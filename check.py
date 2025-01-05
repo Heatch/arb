@@ -1,6 +1,6 @@
 import json
 
-def analyze_arbitrage(mode):
+def analyze_arbitrage(SPORT):
     template = {
         "event": {"home": "", "away": ""}, 
         "fanduel/betmgm": {"home": 0, "away": 0, "roi": 0}, 
@@ -11,13 +11,7 @@ def analyze_arbitrage(mode):
         "betrivers/draftkings": {"home": 0, "away": 0, "roi": 0}
     }
 
-    # Determine file based on mode
-    if (mode.lower() == "basketball") or (mode.lower() == "b"):
-        file = "nba.json"
-    elif (mode.lower() == "football") or (mode.lower() == "f"):
-        file = "nfl.json"
-    else:
-        raise ValueError("Invalid mode. Use 'basketball'/'b' or 'football'/'f'")
+    file = f"{SPORT}.json"
 
     # Read JSON data
     with open(file) as f:
